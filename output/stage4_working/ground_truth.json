@@ -1,0 +1,57 @@
+﻿[
+    {
+        "anomaly_id":  "ANOM-001",
+        "scenario":  "Loan term outside permitted product range",
+        "affected_table":  "LoanApplication",
+        "affected_record_id":  "LOAN-2026-000003",
+        "application_id":  "LOAN-2026-000003",
+        "description":  "Requested loan term exceeds the maximum permitted term for Personal Loan.",
+        "original_value":  "30",
+        "injected_value":  "48",
+        "detection_rule":  "requested_term must be between product min_term and max_term."
+    },
+    {
+        "anomaly_id":  "ANOM-002",
+        "scenario":  "Repayment schedule financial values fail principal/schedule reconciliation",
+        "affected_table":  "RepaymentSchedule",
+        "affected_record_id":  "SCH-LOAN-2026-000007-001",
+        "application_id":  "LOAN-2026-000007",
+        "description":  "Principal amount does not reconcile with the installment amount and opening-to-closing balance.",
+        "original_value":  "21124.3",
+        "injected_value":  "25124.3",
+        "detection_rule":  "principal_amount + interest_amount must equal installment_amount; opening_balance - principal_amount must equal closing_balance."
+    },
+    {
+        "anomaly_id":  "ANOM-003",
+        "scenario":  "Decision date before required assessment timestamps",
+        "affected_table":  "Decision",
+        "affected_record_id":  "DEC-LOAN-2026-000001-01",
+        "application_id":  "LOAN-2026-000001",
+        "description":  "Decision was recorded before both the affordability check and credit assessment were completed.",
+        "original_value":  "2026-02-24 17:17:32",
+        "injected_value":  "2026-02-24 17:15:32",
+        "detection_rule":  "Decision.decision_date must be on or after both AffordabilityCheck.checked_at and CreditAssessment.assessed_at."
+    },
+    {
+        "anomaly_id":  "ANOM-004",
+        "scenario":  "Conflicting verified income sources effective on application date",
+        "affected_table":  "IncomeRecord",
+        "affected_record_id":  "INC-2026-002887;INC-2026-002888",
+        "application_id":  "LOAN-2026-002023",
+        "description":  "Two verified income records from different sources are effective on the application date and differ by more than 10%.",
+        "original_value":  "EMPLOYER: 89740; BUSINESS_RECORD: 58557",
+        "injected_value":  "Not injected - pre-existing baseline conflict",
+        "detection_rule":  "Two VERIFIED income records from different sources effective on the application date with a difference greater than 10%."
+    },
+    {
+        "anomaly_id":  "ANOM-005",
+        "scenario":  "Duplicate successful disbursements for one approved application",
+        "affected_table":  "Disbursement",
+        "affected_record_id":  "DISB-LOAN-2026-000007;DISB-LOAN-2026-000007-02",
+        "application_id":  "LOAN-2026-000007",
+        "description":  "Two successful disbursement records exist for the same approved loan application.",
+        "original_value":  "One successful disbursement",
+        "injected_value":  "Two successful disbursements of 453987 each",
+        "detection_rule":  "An approved application must not have more than one successful disbursement."
+    }
+]
