@@ -172,40 +172,21 @@ Note: ANOM-004 findings are risk signals, not proof of fraud. One selected examp
 
 
 
-```text
-
-YottaFlex\_Project/
-
+YottaFlex_Project/
 ├── data/
-
 │   └── Original baseline CSV datasets
-
 ├── output/
-
-│   └── stage4\_working/
-
+│   └── stage4_working/
 │       ├── 14 working CSV datasets
-
-│       ├── ground\_truth.csv
-
-│       ├── ground\_truth.json
-
-│       ├── detect\_anomalies.py
-
-│       └── anomaly\_detection\_results.csv
-
+│       ├── ground_truth.csv
+│       ├── ground_truth.json
+│       ├── detect_anomalies.py
+│       └── anomaly_detection_results.csv
 ├── scripts/
-
-│   └── generate\_stage3.py
-
+│   └── generate_stage3.py
 └── README.md
 
-```
-
-
-
-Backup files are retained separately in the working folder and are not canonical input tables.
-
+Backup files are retained separately and are not canonical input tables.
 
 
 ## 8. How to Run
@@ -296,5 +277,4 @@ Two foreign-key relationships were explicitly validated: LoanApplication to Appl
 
 
 
-The Stage 4 anomaly injection and initial rule-based detection workflow are complete. Final documentation, remaining validation, and repository preparation are in progress.
-
+The Stage 4 anomaly injection, rule-based detection workflow, initial validation, documentation, and GitHub repository setup are complete. Further improvements include expanded foreign-key validation, reconciliation of the ANOM-004 finding-count discrepancy, and machine-learning-based detection.
